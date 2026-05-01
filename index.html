@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madni Real Estate Agency | مدنی ریئل اسٹیٹ ایجنسی</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #ff9800;
+            --accent: #00bcd4;
+            --text: #fff;
+            --dark-bg: #0f0f0f;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid white;
+            background: white;
+            object-fit: contain;
+            padding: 3px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.6rem;
+            color: white;
+            margin-bottom: 0.2rem;
+            letter-spacing: 1px;
+        }
+
+        .logo-text .subtitle {
+            color: var(--secondary);
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            margin-top: 70px;
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+        }
+
+        .hero-image {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-left-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 80px;
+            height: 100%;
+            background: var(--secondary);
+            z-index: 1;
+        }
+
+        .hero-content {
+            padding: 3rem 3rem;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-content .founder-name {
+            font-size: 1.3rem;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .hero-info {
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            max-width: 300px;
+        }
+
+        .hero-info .time-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+            font-weight: bold;
+        }
+
+        .phone-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.8rem;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid var(--secondary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .phone-button:hover {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+
+        /* OFFICE SECTION */
+        .office-section {
+            padding: 4rem 2rem;
+            background: var(--primary);
+        }
+
+        .office-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .office-images {
+            position: relative;
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 20px;
+        }
+
+        .office-images .small-img {
+            width: 150px;
+            height: 300px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 5px solid var(--secondary);
+        }
+
+        .office-images .large-img {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .office-images .large-img::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: var(--secondary);
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        .office-images .large-img img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .office-content h3 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .office-content p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            color: #ccc;
+        }
+
+        /* PROPERTIES SECTION */
+        .properties-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+        }
+
+        .properties-header {
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: #aaa;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .properties-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .property-card {
+            background: #1a1a1a;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(255,152,0,0.1);
+            transition: all 0.3s;
+            border: 1px solid rgba(255,152,0,0.2);
+            cursor: pointer;
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255,152,0,0.2);
+            border-color: var(--secondary);
+        }
+
+        .property-card-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .property-card h4 {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .property-card-arrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255,152,0,0.2);
+            border: 2px solid var(--secondary);
+            border-radius: 50%;
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+
+        .property-card:hover .property-card-arrow {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 3px solid var(--secondary);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        .footer-contact-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,152,0,0.3);
+            padding-top: 2rem;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            .hero-content {
+                padding: 2rem;
+            }
+
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+
+            .office-container {
+                grid-template-columns: 1fr;
+            }
+
+            .office-images {
+                grid-template-columns: 1fr;
+            }
+
+            .office-images .small-img {
+                width: 100%;
+                height: 200px;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo-text h1 {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content {
+                padding: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .office-content h3 {
+                font-size: 1.8rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="logo.png" alt="Madni Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>MADNI</h1>
+                    <div class="subtitle">REAL ESTAT</div>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-image">
+            <div class="hero-left-bar"></div>
+            <img src="founder.jpg" alt="Muhammad Younus">
+        </div>
+        <div class="hero-content">
+            <h2>MEET OUR<br>FOUNDER</h2>
+            <div class="founder-name">MUHAMMAD YOUNUS</div>
+            <div class="hero-info">
+                <div class="time-badge">2026 - PRESENT</div>
+                <p>ہم 24 گھنٹہ میں سے کسی بھی وقت موجود ہوں۔ ہو کاہے اپ کو اپنی خوبصورت پلاٹ کی درخواست ہے تو ہمارے ساتھ رجوع کریں۔</p>
+            </div>
+            <a href="tel:+923207596348" class="phone-button">
+                <span>☎</span>
+                +92 320 7596348
+            </a>
+        </div>
+    </section>
+
+    <!-- OFFICE SECTION -->
+    <section class="office-section" id="about">
+        <div class="office-container">
+            <div class="office-images">
+                <img src="office.jpg" alt="Office Interior" class="small-img">
+                <div class="large-img">
+                    <img src="office.jpg" alt="Office Main">
+                </div>
+            </div>
+            <div class="office-content">
+                <h3>OFFICE</h3>
+                <p>ہمارے پاس مختلف پلاٹس اور مختلف لوکیشن ہیں جو کہ بہت اچھی اور موجود جگہوں پر ہیں۔ زمین دستیاب ہے جو کہ پالک مناسب قیمت پر ہے۔ اگر آپ کو DREAM HOUSE کی ضرورت ہے ہے ہمارے ساتھ رجوع کریں۔</p>
+                <a href="tel:+923207596348" class="phone-button">
+                    <span>☎</span>
+                    +92 320 7596348
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROPERTIES SECTION -->
+    <section class="properties-section" id="properties">
+        <div class="properties-header">
+            <h2 class="section-title">مدنی ریئل اسٹیٹ</h2>
+            <p class="section-subtitle">ہمارے پاس مختلف قسم کی جائیدادیں دستیاب ہیں جو کہ مختلف لوکیشنز پر موجود ہیں۔ اپنے خوابوں کا گھر تلاش کریں۔</p>
+        </div>
+
+        <div class="properties-grid">
+            <div class="property-card">
+                <div class="property-card-content">
+                    <h4>اسکیم فیز 2<br>ہاؤسنگ</h4>
+                    <div class="property-card-arrow">›</div>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="property-card-content">
+                    <h4>اسکیم فیز 1 کلاسِی<br>ہاؤسنگ</h4>
+                    <div class="property-card-arrow">›</div>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="property-card-content">
+                    <h4>ہاؤسنگ<br>شہر</h4>
+                    <div class="property-card-arrow">›</div>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="property-card-content">
+                    <h4>ہاؤسنگ<br>شہر</h4>
+                    <div class="property-card-arrow">›</div>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="property-card-content">
+                    <h4>اسکیم فیز 2<br>ہاؤسنگ</h4>
+                    <div class="property-card-arrow">›</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>📍 LOCATION</h4>
+                <p>Sadabad, Kalatuk<br>Pakistan</p>
+            </div>
+            <div class="footer-section">
+                <h4>☎ CONTACT</h4>
+                <p>+92 320 7596348</p>
+                <p>0373 083 3014</p>
+            </div>
+            <div class="footer-section">
+                <h4>✉ EMAIL</h4>
+                <p>realestate.madni77<br>@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>🌐 SOCIAL</h4>
+                <p>@reallyreatsite<br>Follow Us</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Madni Real Estate Agency | مدنی ریئل اسٹیٹ ایجنسی | All Rights Reserved</p>
+        </div>
+    </footer>
+</body>
+</html>
